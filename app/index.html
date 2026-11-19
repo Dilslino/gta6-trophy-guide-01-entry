@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice City Trophy Atlas — GTA 6 Trophy Guide &amp; Tracker</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="hero" id="top">
+  <svg class="skyline" viewBox="0 0 1200 120" preserveAspectRatio="none" aria-hidden="true">
+    <rect x="0" y="70" width="60" height="50"/><rect x="70" y="40" width="50" height="80"/>
+    <rect x="130" y="60" width="70" height="60"/><rect x="210" y="20" width="46" height="100"/>
+    <rect x="266" y="55" width="60" height="65"/><rect x="336" y="35" width="54" height="85"/>
+    <rect x="400" y="65" width="80" height="55"/><rect x="490" y="15" width="40" height="105"/>
+    <rect x="540" y="50" width="66" height="70"/><rect x="616" y="70" width="54" height="50"/>
+    <rect x="680" y="30" width="48" height="90"/><rect x="738" y="58" width="72" height="62"/>
+    <rect x="820" y="42" width="50" height="78"/><rect x="880" y="68" width="64" height="52"/>
+    <rect x="954" y="25" width="44" height="95"/><rect x="1008" y="55" width="70" height="65"/>
+    <rect x="1088" y="38" width="52" height="82"/><rect x="1150" y="62" width="50" height="58"/>
+  </svg>
+  <div class="hero-inner">
+    <p class="kicker">Grand Theft Auto VI &middot; PlayStation 5 &middot; 55 trophies, all offline</p>
+    <h1>VICE CITY<br>TROPHY ATLAS</h1>
+    <p class="tagline">Every trophy, every step, every source — mapped across Leonida, with your progress on top.</p>
+    <div class="platinum-box" id="platinumBox">
+      <svg class="ring" viewBox="0 0 120 120" aria-hidden="true">
+        <circle class="ring-bg" cx="60" cy="60" r="52"/>
+        <circle class="ring-fg" id="ringFg" cx="60" cy="60" r="52"/>
+      </svg>
+      <div class="ring-text"><strong id="ringCount">0/55</strong><span id="ringPct">0%</span></div>
+      <div class="platinum-meta">
+        <strong id="platinumTitle">Vice Got a Price!</strong>
+        <span id="platinumSub">Platinum — earn the other 54</span>
+        <span id="pointsLine">0 / 1,350 trophy points</span>
+      </div>
+    </div>
+  </div>
+  <dl class="stats" id="statsBar">
+    <div><dt>Trophies</dt><dd>55</dd></div>
+    <div><dt>Platinum</dt><dd>1</dd></div>
+    <div><dt>Gold</dt><dd>2</dd></div>
+    <div><dt>Silver</dt><dd>6</dd></div>
+    <div><dt>Bronze</dt><dd>46</dd></div>
+    <div><dt>To Platinum</dt><dd>~200 h</dd></div>
+    <div><dt>Difficulty</dt><dd>4/10</dd></div>
+    <div><dt>Missable</dt><dd id="statMissable">1</dd></div>
+    <div><dt>Online</dt><dd>0</dd></div>
+  </dl>
+</header>
+
+<nav class="controls" id="controls" aria-label="Filters">
+  <label class="search">Search <input id="search" type="search" placeholder="Name or description…"></label>
+  <label>Grade <select id="grade">
+    <option value="all">All grades</option><option value="platinum">Platinum</option>
+    <option value="gold">Gold</option><option value="silver">Silver</option><option value="bronze">Bronze</option>
+  </select></label>
+  <label>Kind <select id="kind">
+    <option value="all">All kinds</option><option value="story">Story</option><option value="side">Side</option>
+    <option value="collectible">Collectible</option><option value="combat">Combat</option>
+    <option value="driving">Driving</option><option value="platinum">Platinum</option>
+  </select></label>
+  <label>Show <select id="earned">
+    <option value="all">Earned + unearned</option><option value="earned">Earned only</option><option value="unearned">Unearned only</option>
+  </select></label>
+  <label>Sort <select id="sort">
+    <option value="roadmap">Roadmap order</option><option value="grade">Grade</option><option value="difficulty">Difficulty</option><option value="name">Name A–Z</option>
+  </select></label>
+  <label class="check"><input id="missableOnly" type="checkbox"> Missable only</label>
+  <label class="check"><input id="spoilerToggle" type="checkbox" checked> Hide story spoilers</label>
+  <button id="exportBtn" type="button">Export progress</button>
+  <label class="import">Import progress <input id="importFile" type="file" accept="application/json"></label>
+  <button id="resetBtn" type="button">Reset</button>
+</nav>
+
+<section class="progress" id="progressSection" aria-label="Progress by category">
+  <h2>Your progress</h2>
+  <div id="categoryBars"></div>
+</section>
+
+<main>
+  <section id="gridSection" aria-label="Trophy list">
+    <h2 id="gridHeading">All 55 trophies</h2>
+    <p id="resultCount" class="muted"></p>
+    <div class="grid" id="grid"></div>
+  </section>
+
+  <section id="roadmap" aria-label="Roadmap to the platinum">
+    <h2>Roadmap to the Platinum — about 200 hours</h2>
+    <p class="muted">One playthrough is enough. There is no mission replay and no New Game+, but free roam continues after the story — so do the chapter-gated things while you are in them, and keep a manual save at the start of every chapter. Cheats disable trophies and saving: leave them off.</p>
+    <ol class="phases" id="phases"></ol>
+  </section>
+
+  <section id="missableWall" aria-label="Missable trophies">
+    <h2>Missable wall — read this before Chapter 1 ends</h2>
+    <p class="muted">PowerPyx and GTABase agree: only one trophy in the whole set can be missed. Story trophies cannot be missed — they pop by playing — and everything else stays available in free roam after the story. The wall below is the complete list.</p>
+    <div id="missableList"></div>
+    <p class="muted">Safety net: manual save at the start of every chapter, one more before the final mission. If a prompt never appears, reload the chapter-start save.</p>
+  </section>
+
+  <section id="sources" aria-label="Sources and method">
+    <h2>Sources &amp; method</h2>
+    <p>Names, descriptions and grades are the official list as published 18 November 2026. Every guide is written in our own words for this atlas; each trophy cites the guide it draws on — a source is cited, never copied. Difficulty and time are our estimates, grounded in PowerPyx's 4/10 and ~200-hour rating. Five trophies are marked <em>unconfirmed</em>: the guides have not yet pinned down their exact triggers, and their guides say so openly. Missable flags follow PowerPyx and GTABase, who flag one trophy.</p>
+    <ul id="sourceList"></ul>
+    <p class="muted">No Rockstar Games logo, artwork or game screenshot is used anywhere in this guide — the look is our own. This guide runs fully offline from its own files; the source links above open only if you follow them.</p>
+  </section>
+</main>
+
+<div class="detail" id="detail" hidden role="dialog" aria-modal="true" aria-labelledby="detailName">
+  <div class="detail-card">
+    <button id="detailClose" type="button" aria-label="Close guide">✕</button>
+    <p class="detail-grade"><span id="detailGradeIcon"></span><span id="detailGrade"></span> · <span id="detailKind"></span> · <span id="detailPhase"></span></p>
+    <h3 id="detailName"></h3>
+    <p id="detailDesc" class="detail-desc"></p>
+    <p id="detailBadges" class="badges"></p>
+    <p class="detail-meta"><span id="detailDiff"></span> · <span id="detailTime"></span></p>
+    <h4>How to unlock it</h4>
+    <ol id="detailSteps"></ol>
+    <p id="detailTip" class="tip"></p>
+    <p id="detailMissable" class="warn" hidden></p>
+    <h4>Sources</h4>
+    <ul id="detailSources"></ul>
+    <button id="detailTick" type="button">Mark earned</button>
+  </div>
+</div>
+
+<footer>
+  <p>Vice City Trophy Atlas — an unofficial fan guide. Grand Theft Auto and GTA are trademarks of Take-Two Interactive; this guide is not affiliated with or endorsed by Rockstar Games.</p>
+  <p><a href="#top">Back to top</a> · <a href="#roadmap">Roadmap</a> · <a href="#missableWall">Missable wall</a></p>
+</footer>
+<script type="module" src="app.js"></script>
+</body>
+</html>
